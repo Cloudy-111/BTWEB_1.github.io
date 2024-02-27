@@ -16,9 +16,67 @@
                 <% } else { %>
                     there
                 <% } %>
+                <h1>Danh sách kì thi</h1>
+                <div class="filter">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm...">
+                    <select id="statusFilter">
+                      <option value="all">Tất cả</option>
+                      <option value="open">Mở</option>
+                      <option value="closed">Đóng</option>
+                    </select>
+                </div>
+                <ul id="examList">
+                    <!-- Danh sách các kỳ thi sẽ được tạo ra bằng JavaScript -->
+                </ul>
             </div>
         </div>
     </main>
 </body>
+
+<script>
+    // Dữ liệu giả định cho danh sách kỳ thi
+const exams = [
+  { name: "Luyện tập", status: "open" },
+  { name: "Giữa kỳ", status: "closed" },
+  { name: "Cuối kỳ", status: "open" }
+];
+
+// Hiển thị danh sách kỳ thi
+function displayExams() {
+  const examList = document.getElementById("examList");
+  examList.innerHTML = "";
+  exams.forEach(exam => {
+    const li = document.createElement("li");
+    li.textContent = exam.name;
+    examList.appendChild(li);
+  });
+}
+
+// Lọc kỳ thi theo trạng thái
+function filterExams() {
+  const statusFilter = document.getElementById("statusFilter");
+  const selectedStatus = statusFilter.value;
+  const filteredExams = selectedStatus === "all" ? exams : exams.filter(exam => exam.status === selectedStatus);
+  displayExams(filteredExams);
+}
+
+// Tìm kiếm kỳ thi
+function searchExams() {
+  const searchInput = document.getElementById("searchInput");
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredExams = exams.filter(exam => exam.name.toLowerCase().includes(searchTerm));
+  displayExams(filteredExams);
+}
+
+// Sự kiện khi trang được tải
+document.addEventListener("DOMContentLoaded", function() {
+  displayExams();
+  const searchInput = document.getElementById("searchInput");
+  const statusFilter = document.getElementById("statusFilter");
+  searchInput.addEventListener("input", searchExams);
+  statusFilter.addEventListener("change", filterExams);
+});
+
+</script>
 
 </html>

@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "deploy": "gh-pages -d view/pages"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "homepage": "https://B21DCCN226.github.io/Home",
     "bcrypt": "^5.1.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-flash": "^0.0.2",
     "express-session": "^1.18.0",
+    "gh-pages": "^6.1.1",
     "method-override": "^3.0.0",
     "msnodesqlv8": "^4.1.2",
     "mssql": "^10.0.2",
