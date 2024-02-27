@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "devStart": "nodemon server.js",
-    "deploy": "gh-pages -d view/pages"
+    "deploy": "gh-pages -d views/pages"
   },
   "author": "",
   "license": "ISC",
