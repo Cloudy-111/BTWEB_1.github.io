@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap');
+
+*{
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+body{
+    background: url("/assest/background-ptit.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container{
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.781);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.781);
+    width: 420px;
+    color: white;
+    border-radius: 20px;
+    padding: 30px 40px;
+}
+
+.container h1{
+    text-align: center;
+}
+
+.container .input_box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    align-items: center;
+}
+
+.input_box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.781);
+    /* box-shadow: 0px 6.25px 20px 0px rgba(0, 0, 0, 0.13); */
+    border-radius: 40px;
+    font-size: 16px;
+    padding: 0 40px 0 10px;
+    box-sizing: border-box;
+}
+
+.input_box input::placeholder{
+    color: white;
+    font-size: 16px;
+}
+
+.input_box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.container .btn{
+    /* color: #fff; */
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 900;
+    /* background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); */
+
+    transition: all .4s ease-in-out;
+}
+
+.container .btn:hover{
+    /* letter-spacing: 1px;
+    font-size: 20px; */
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+}
+
+.container .login_link{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.login_link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800
+}
+
+.login_link p a:hover{
+    text-decoration: underline;
+}
+
+.alert{
+    text-align: center;
+}

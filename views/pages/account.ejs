@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Account</title>
+    <link href="/styleAccount/style.css" type="text/css" rel="stylesheet">
+    <%- include("../patials/head"); %>
+</head>
+<body>
+    <%- include('../patials/header'); %>
+    <main>
+        <div class="container_account">
+            <%- include('../patials/leftNavbar'); %>
+            <div class="main_content">
+                <div class="infor_box">
+                    <div class="content_wrap">
+                        <h2>Infor</h2>
+                        <div class="user_ava"></div>
+                        <div class="content">
+                            <div class="row_infor">
+                                <i class="fas fa-id-card"></i>
+                                <p><%= id %></p>                                    
+                            </div>
+                            <div class="row_infor">
+                                <i class="fas fa-user"></i>
+                                <p><%= name %></p>
+                            </div>
+                            <div class="row_infor">
+                                <i class="fas fa-envelope"></i>
+                                <p><%= email %></p>
+                            </div>
+                            <div class="row_infor">
+                                <i class="fas fa-calendar"></i>
+                                <p><%= date %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modified_box">
+                    <div class="content_wrap">
+                        <h2>Modified</h2>
+                        <form action="/account" method="post">
+                            <p>ID: <input class="input_field" type="text" name="id" id="input_ID" readonly></p>
+                            <p>Username: <input class="input_field" type="text" name="username" id="input_username"></p>
+                            <p>Email: <input class="input_field" type="text" name="email" id="input_email" readonly></p>
+                            <button type="submit">Cập nhật</button>
+                        </form>
+                        <div class="button_container">
+                            <button type="button">Đổi mật khẩu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+    document.getElementById("input_username").value = "<%= name %>";
+    document.getElementById("input_email").value = "<%= email %>";
+    document.getElementById("input_ID").value = '<%= id %>';
+</script>
+</body>
+</html>

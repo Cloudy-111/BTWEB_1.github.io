@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+h2{
+    color: black;
+}
+
+.container_account{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: var(--body-color);
+}
+
+.main_content{
+    font-size: var(--fs-small);
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 100vw;
+}
+
+.infor_box,
+.modified_box{
+    flex: 1;
+    padding: 10px 10px 0 0;
+    color: black;
+}
+
+.infor_box{
+    .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        .row_infor{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 10px;
+            color: black;
+            p{
+                margin: 5px 0 5px 15px;
+            }
+        }
+    }
+}
+
+.modified_box{
+    p{
+        color: black;
+    }
+    input{
+        outline: none;
+        color: black;
+        width: 600px;
+        padding: 0 10px 0 10px;
+        border: solid 1px;
+        border-color: var(--input-border-color);
+        transition: var(--tran-05);
+    }
+    
+}
+
+.modified_box form{
+    p{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.modified_box input:hover {
+    box-shadow: var(--input-boxshadow-hover);
+}
+
+.modified_box button{
+    margin-top: 10px;
+    border-radius: 20px;
+    color: black;
+    border: 1px solid;
+    box-shadow: var(--button-boxshadow);
+}
+
+.modified_box button:hover{
+    background-color: var(--box-backgroundcolor-hover);
+}
+
+.modified_box button:active{
+    box-shadow: var(--button-boxshadow-active);
+    outline: none;
+    border-color: transparent;
+}
+
+.content_wrap{
+    border: 1px solid;
+    background-color: var(--box-backgroundcolor);
+    border-radius: 10px;
+    padding: 10px;
+}
+

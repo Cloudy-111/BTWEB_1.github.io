@@ -1,0 +1,6 @@
+.container_setting{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--body-color);
+    color: var(--text-color);
+}

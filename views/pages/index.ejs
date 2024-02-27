@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link href="/styleIndex/style.css" type="text/css" rel="stylesheet">
+    <%- include("../patials/head"); %>
+</head>
+<body>
+    <%- include('../patials/header'); %>
+    <main>
+        <div class="container_index">
+            <%- include('../patials/leftNavbar'); %>
+            <div class="main_content">
+                Hello <% if (name) { %>
+                    <%= name %>
+                <% } else { %>
+                    there
+                <% } %>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

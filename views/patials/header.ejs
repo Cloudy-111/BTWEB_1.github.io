@@ -1,0 +1,72 @@
+<header class = "header_nav">
+    <nav class = "navbar">
+        <div class="nameWeb">
+            <a href="/"><img src="/assest/logo.png" alt="Logo"></a>
+            <p>Web Name</p>
+        </div>
+        <div class = "navbar_searchbox">
+            <input type="text" placeholder="Tìm kiếm...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="navbar_menu">
+            <ul class="navbar_listMenu">
+                <li><a class="navbar_link" href="#">Liên hệ</a></li>
+                <li><a class="navbar_link" href="#">Thể loại</a></li>
+                <li><a class="navbar_link" href="#">Thông báo</a></li>
+            </ul>
+        </div>
+        <div class="navbar_avatar" onclick="toggleMenu()">
+            <div class="navbar_linkAvatar" id="menu-button"><i class="fas fa-user"></i></div>
+        </div>
+    </nav>
+    <div class="sub_menu" id="subMenu">
+        <div class="menu">
+            <a href="/account">
+                <div class="user_infor">
+                    <div class="user_ava"></div>
+                    <% if (name) { %>
+                        <h2><%= name %></h2>
+                    <% } else { %>
+                        <h2>there</h2>
+                    <% } %>
+                </div>
+            </a>
+            <hr>
+            <a href="/setting" class="sub_menu_link">
+                <p>Cài đặt</p>
+                <span>></span>
+            </a>
+            <a href="#" class="sub_menu_link">
+                <p>Trợ giúp</p>
+                <span>></span>
+            </a>
+            <a href="#" class="sub_menu_link">
+                <p>Tải lên</p>
+                <span>></span>
+            </a>
+            <a href="#" class="sub_menu_link">
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button class="navbar_link" type="submit">Đăng xuất</button>
+                </form>
+                <span>></span>
+            </a>
+        </div>
+    </div>
+</header>
+
+
+<script>
+// nhấn vào button thì ẩn hiện menu, nhấn ra ngoài cũng ẩn menu đó
+$('#menu-button').click(function(e){
+    e.stopPropagation();
+    $('#subMenu').toggleClass('open_menu');
+});
+
+$('#subMenu').click(function(e){
+    e.stopPropagation();
+});
+
+$('body,html').click(function(e){
+   $('#subMenu').removeClass('open_menu');
+});
+</script>

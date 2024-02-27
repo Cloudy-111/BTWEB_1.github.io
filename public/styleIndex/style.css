@@ -1,0 +1,10 @@
+.container_index{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+.main_content{
+    width: 100vw;
+}
