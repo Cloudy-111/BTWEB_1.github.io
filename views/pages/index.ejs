@@ -27,7 +27,7 @@
                         </select>
                     </div>
                     <ul id="examList">
-                        <li>
+                        <li class="open">
                             Luyện tập(Tự do)
                             <div class="test_open">
                                 <a href="/test.ejs">Luyện tập 1</a>
@@ -36,7 +36,7 @@
                                 <a href="/test.ejs">Luyện tập 4</a>
                             </div>
                         </li>
-                        <li>
+                        <li class="closed">
                             Giữa kì (ngày 20/03/2024)
                             <div class="test_close" id="test_close1">
                                 <a>Giữa kì 1</a>
@@ -45,7 +45,7 @@
                                 <a>Giữa kì 4</a>
                             </div>
                         </li>
-                        <li>
+                        <li class="closed">
                             Cuối kì (ngày 20/05/2024)
                             <div class="test_close" id="test_close2">
                                 <a>Cuối kì 1</a>
@@ -69,6 +69,27 @@
             event.preventDefault();
             alert('Chưa đến thời gian làm bài thi!')
         })
+
+        const statusFilter = document.getElementById('statusFilter');
+        const examList = document.getElementById('examList');
+        statusFilter.addEventListener('change', function(){
+            filterItems();
+        })
+
+        function filterItems(){
+            const status = statusFilter.value;
+            Array.from(examList.getElementsByTagName('li')).forEach(function(item){
+                const testOpen = item.querySelector('.test_open');
+                const testClose = item.querySelector('.test_close');
+                console.log(status);
+
+                if (status === 'all' || (status === 'open' && testOpen) || (status === 'closed' && testClose)){
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            })
+        }
     </script>
 </body>
 
