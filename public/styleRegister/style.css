@@ -114,3 +114,23 @@ body{
 .alert{
     text-align: center;
 }
+
+.container .chooseTypeRegister{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    label{
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 25px;
+    }
+}
+
+input[type=radio]{
+    --s: 20px;
+    height: var(--s);
+    aspect-ratio: 1;
+    border: calc(var(--s)/8) solid #939393;
+    padding: calc(var(--s)/8);
+}

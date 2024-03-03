@@ -45,19 +45,46 @@ app.post(
   })
 );
 
+app.post(
+  "/loginAdmin",
+  checkNotAuthenticatedAdmin,
+  passport.authenticate("local", {
+    successRedirect: "/admin",
+    failureRedirect: "/loginAdmin",
+    failureFlash: true,
+  })
+);
+
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   // lấy dữ liệu từ trang register
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10); //mã hóa mật khẩu
-    users.push({
-      id: Date.now().toString(), //Id từng người là độc nhất, lấy theo Date.now()
-      username: req.body.username, //lấy các element theo name
-      email: req.body.email,
-      password: hashedPassword,
-    });
-    console.log(users); // hiển thị user sau khi đăng ký
-
-    res.redirect("/login"); //kết quả trả về là trang login
+    const secretkey = await req.body.secretkey;
+    const userType = await req.body.options;
+    if (userType === "Admin" && secretkey === "SECRETKEY") {
+      users.push({
+        id: Date.now().toString(), //Id từng người là độc nhất, lấy theo Date.now()
+        username: req.body.username, //lấy các element theo name
+        email: req.body.email,
+        password: hashedPassword,
+        userType: userType,
+      });
+      console.log(users); // hiển thị user sau khi đăng ký
+      res.redirect("/loginAdmin");
+    } else if (userType === "Admin" && secretkey != "SECRETKEY") {
+      res.send(
+        "<script>alert('Invalid secret key. Please try again.'); window.location='/register';</script>"
+      );
+    } else {
+      users.push({
+        id: Date.now().toString(), //Id từng người là độc nhất, lấy theo Date.now()
+        username: req.body.username, //lấy các element theo name
+        email: req.body.email,
+        password: hashedPassword,
+        userType: userType,
+      });
+      res.redirect("/login");
+    } //kết quả trả về là trang login
   } catch (error) {
     console.log(error);
     res.redirect("/register");
@@ -69,11 +96,19 @@ app.get("/", checkAuthenticated, (req, res) => {
   res.render("pages/index.ejs", { name: req.user.username });
 });
 
+app.get("/admin", checkAuthenticated, (req, res) => {
+  res.render("pages/indexAdmin.ejs", { name: req.user.username });
+});
+
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login.ejs");
 });
 
-app.get("/register", checkNotAuthenticated, (req, res) => {
+app.get("/loginAdmin", checkNotAuthenticatedAdmin, (req, res) => {
+  res.render("loginAdmin.ejs");
+});
+
+app.get("/register", (req, res) => {
   res.render("register.ejs");
 });
 // End routes
@@ -95,6 +130,13 @@ function checkAuthenticated(req, res, next) {
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return res.redirect("/");
+  }
+  next();
+}
+
+function checkNotAuthenticatedAdmin(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/admin");
   }
   next();
 }
