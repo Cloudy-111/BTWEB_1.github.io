@@ -85,6 +85,15 @@ app.delete("/logout", (req, res) => {
   });
 });
 
+
+app.get("/resultpage", (req,res) => {
+  res.render("resultpage.ejs");
+});
+
+app.get("/dashboard", (req,res) => {
+  res.render("dashboard.ejs");
+});
+
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();

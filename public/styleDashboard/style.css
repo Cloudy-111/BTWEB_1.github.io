@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap');
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #f0f2f5;
+    font-size: 16px;
+}
+
+.page {
+    display: grid;
+    position: relative;
+}
+
+header {
+    height: 48px;
+    background-color: #001529;
+    z-index: 99;
+}
+
+.header-container {
+    height: 100%;
+    margin: 0 16px;
+    display: flex;
+    align-items: center;
+}
+
+.header-container > h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-left: 12px;      
+}
+
+.body {
+    display: flex;
+}
+
+.menu > .active {
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.menu-item > span {
+    font-size: 16px;
+}
+
+main {
+    width: 100vw;
+    height: 90vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    padding-left: 200px;
+    background: #f0f2f5;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+
+main::-webkit-scrollbar {
+    width: 0px;
+}
+
+.main-container {
+    width: 80vw;
+    margin: 20px 0 0 20px;
+}
+
+textarea {
+    resize: none;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 10px 15px -3px #0000001a;
+    background-color: #fff;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    color: #090909;
+}
+
+tr:hover {
+    cursor: pointer;
+}
+
+.required-mark::after {
+    display: inline-block;
+    margin-left: 4px;
+    color: #ff4d4f;
+    font-size: 14px;
+    line-height: 1;
+    content: "*";
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #cc0d00;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.exam-area > span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.exam-list-card {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.exam-card {
+    width: 20vw;
+    height: 170px;
+    padding: 20px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.exam-card-content {
+    margin-top: 10px;
+}
+
+.student-area {
+    width: 80vw;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.select:focus {
+    outline: none;
+}
+
+.statistic-area {
+    width: 80vw;
+    height: 500px;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+  

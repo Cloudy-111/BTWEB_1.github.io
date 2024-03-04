@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styleResulpage/resultpage.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- <script src="./main.js"></script> -->
+    <title>Trang thống kê</title>
+  </head>
+  <body>
+    <div class="statistic-page">
+      <div class="container">
+        <div style="display: flex; gap: 6px">
+          <h2>Kết quả bài thi:</h2>
+          <h2 id="exam-name"></h2>
+        </div>
+        <div class="statistic-general">
+          <div><h3>Tổng quát</h3></div>
+          <div class="list-card">
+            <div class="card">
+              <div class="card-container">
+                <div class="card-row">
+                  <span class="large-normal-font">Kết quả: </span>
+                  <span class="large-bold-font">
+                    <span id="correct-answer-total"></span>
+                    <span>/</span>
+                    <span id="question-total"></span>
+                  </span>
+                </div>
+                <div class="card-row">
+                  <span class="large-normal-font">Tổng điểm: </span>
+                  <span class="large-bold-font" id="score"></span>
+                </div>
+                <div class="card-row">
+                  <span class="large-normal-font">Thời gian thi: </span>
+                  <span class="large-bold-font" id="exam-time"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-container">
+                <div class="card-row center" style="margin-top: 20px">
+                  <span
+                    style="font-size: 20px; font-weight: 600; color: #28bb2d"
+                    >Câu trả lời đúng</span
+                  >
+                </div>
+                <div class="center">
+                  <span
+                    style="font-size: 30px; font-weight: 600"
+                    id="correct-box"
+                  ></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-container">
+                <div class="card-row center" style="margin-top: 20px">
+                  <span style="font-size: 20px; font-weight: 600; color: red"
+                    >Câu trả lời sai</span
+                  >
+                </div>
+                <div class="center">
+                  <span
+                    style="font-size: 30px; font-weight: 600"
+                    id="incorrect-box"
+                  ></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-container">
+                <div class="card-row center" style="margin-top: 20px">
+                  <span
+                    style="font-size: 20px; font-weight: 600; color: #71869d"
+                    >Tổng điểm</span
+                  >
+                </div>
+                <div class="center">
+                  <span
+                    style="font-size: 30px; font-weight: 600"
+                    id="score-box"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="statistic-detail">
+          <div><h3>Chi tiết đáp án</h3></div>
+          <div class="list-question" id="list-question"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
