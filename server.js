@@ -87,7 +87,89 @@ app.delete("/logout", (req, res) => {
 
 
 app.get("/resultpage", (req,res) => {
-  res.render("resultpage.ejs");
+  const danh_sach_ki_thi = {
+    1: {
+      TenKiThi: "Giữa kì môn Lập trình web",
+      Loai: "Tự do",
+      danh_sach_cau_hoi: {
+        1: {
+          de_bai: "Thiết bị hub thông thường nằm ở tầng nào của mô hình OSI?",
+          danh_sach_dap_an: {
+            A: "Tầng 1",
+            B: "Tầng 2",
+            C: "Tầng 3",
+            D: "Tầng 4",
+          },
+          dap_an_dung: "A",
+        },
+        2: {
+          de_bai: "Thiết bị hub thông thường nằm ở tầng nào của mô hình OSI?",
+          danh_sach_dap_an: {
+            A: "Tầng 1",
+            B: "Tầng 2",
+            C: "Tầng 3",
+            D: "Tầng 4",
+          },
+          dap_an_dung: "A",
+        },
+        3: {
+          de_bai: "Thiết bị hub thông thường nằm ở tầng nào của mô hình OSI?",
+          danh_sach_dap_an: {
+            A: "Tầng 1",
+            B: "Tầng 2",
+            C: "Tầng 3",
+            D: "Tầng 4",
+          },
+          dap_an_dung: "A",
+        },
+      },
+    },
+  };
+
+  const bai_lam = {
+    ma_de: 1,
+    phieu_tra_loi: ["A", "B", "B"],
+    thoi_gian_lam: "0:22:12",
+  };
+
+  res.render("resultpage.ejs", { danh_sach_ki_thi: {
+    1: {
+      TenKiThi: "Giữa kì môn Lập trình web",
+      Loai: "Tự do",
+      danh_sach_cau_hoi: {
+        1: {
+          de_bai: "Thiết bị hub thông thường nằm ở tầng nào của mô hình OSI?",
+          danh_sach_dap_an: {
+            A: "Tầng 1",
+            B: "Tầng 2",
+            C: "Tầng 3",
+            D: "Tầng 4",
+          },
+          dap_an_dung: "A",
+        },
+        2: {
+          de_bai: "Thiết bị hub thông thường nằm ở tầng nào của mô hình OSI?",
+          danh_sach_dap_an: {
+            A: "Tầng 1",
+            B: "Tầng 2",
+            C: "Tầng 3",
+            D: "Tầng 4",
+          },
+          dap_an_dung: "A",
+        },
+        3: {
+          de_bai: "Thiết bị hub thông thường nằm ở tầng nào của mô hình OSI?",
+          danh_sach_dap_an: {
+            A: "Tầng 1",
+            B: "Tầng 2",
+            C: "Tầng 3",
+            D: "Tầng 4",
+          },
+          dap_an_dung: "A",
+        },
+      },
+    },
+  }, bai_lam: bai_lam, name: 'Tu' });
 });
 
 app.get("/dashboard", (req,res) => {
