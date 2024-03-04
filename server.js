@@ -172,9 +172,94 @@ app.get("/resultpage", (req,res) => {
   }, bai_lam: bai_lam, name: 'Tu' });
 });
 
-app.get("/dashboard", (req,res) => {
-  res.render("dashboard.ejs");
+app.get("/dashboard", (req, res) => {
+  const dsKiThi = {
+    1: {
+      ten: "Giữa kì môn lập trình web 2024",
+      soCauHoi: 30,
+      ngayThi: "5-5-2023",
+      trangThai: "Thời gian cố định",
+    },
+    2: {
+      ten: "Giữa kì môn Triết học 2024",
+      soCauHoi: 40,
+      ngayThi: "7-6-2023",
+      trangThai: "Thời gian cố định",
+    },
+    3: {
+      ten: "Giữa kì môn Cơ sở dữ liệu phân tán",
+      soCauHoi: 40,
+      ngayThi: "15-6-2023",
+      trangThai: "Thời gian cố định",
+    },
+  };
+  
+  const dsSinhVien = {
+    1: {
+      hoten: "Nguyễn Thị Hải",
+      msv: "B21DCCN345",
+      ml: "D21CQCN02-B",
+      ngaysinh: "2003-12-19",
+    },
+    2: {
+      hoten: "Trần Văn An",
+      msv: "B21DCCN712",
+      ml: "D21CQCN02-B",
+      ngaysinh: "1995-06-05",
+    },
+    3: {
+      hoten: "Lê Thị Thu Hương",
+      msv: "B21DCCN123",
+      ml: "D21CQCN02-B",
+      ngaysinh: "2000-09-10",
+    },
+    4: {
+      hoten: "Phạm Minh Tuấn",
+      msv: "B21DCCN567",
+      ml: "D21CQCN02-B",
+      ngaysinh: "1998-03-22",
+    },
+    5: {
+      hoten: "Hoàng Thị Lan Anh",
+      msv: "B21DCCN234",
+      ml: "D21CQCN02-B",
+      ngaysinh: "2001-08-15",
+    },
+    6: {
+      hoten: "Võ Ngọc Duy",
+      msv: "B21DCCN890",
+      ml: "D21CQCN02-B",
+      ngaysinh: "1993-11-03",
+    },
+    7: {
+      hoten: "Mai Văn Hòa",
+      msv: "B21DCCN456",
+      ml: "D21CQCN02-B",
+      ngaysinh: "2002-02-14",
+    },
+    8: {
+      hoten: "Đỗ Thị Kim Chi",
+      msv: "B21DCCN789",
+      ml: "D21CQCN02-B",
+      ngaysinh: "1996-07-28",
+    },
+    9: {
+      hoten: "Nguyễn Minh Quân",
+      msv: "B21DCCN321",
+      ml: "D21CQCN02-B",
+      ngaysinh: "1997-04-09",
+    },
+    10: {
+      hoten: "Trần Thị Quỳnh Trang",
+      msv: "B21DCCN654",
+      ml: "D21CQCN02-B",
+      ngaysinh: "1999-01-12",
+    },
+  };
+  
+  res.render("dashboard.ejs", { dsKiThi, dsSinhVien });
 });
+
 
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
