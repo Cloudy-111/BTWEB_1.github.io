@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
-    <link href="/styleIndex/style.css" type="text/css" rel="stylesheet">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/styleDashboard/style.css"/>
     <%- include("../patials/head"); %>
 </head>
 <body>
+    <%- include('../patials/headerAdmin'); %>
     <main>
         <div class="container_index">
             <div class="main_content">
@@ -14,7 +15,9 @@
                 <% } else { %>
                     there
                 <% } %>
-                
+                <a href="/thongke">Thong ke</a>
+                <a href="/detailsResult">Chi tiet</a>
+
             </div>
         </div>
     </main>

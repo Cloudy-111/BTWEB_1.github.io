@@ -3,35 +3,46 @@
 
 *{
     font-family: "Be Vietnam Pro", sans-serif;
+    z-index: 10;
 }
 
 :root{
     /*---------------FONT SIZE---------------*/
+    --fs-smallest: 15px;
     --fs-small: 20px;
     --fs-medium: 25px;
     --fs-large: 30px;
-    --fs-super-large: ;
+    --fs-largest: 40px;
     /*---------------FONT WEIGHT---------------*/
     --fw-light: 400;
     --fw-medium: 600;
     --fw-bold: 800;
     /*---------------COLORS---------------*/
     --body-color: #343A40;
-    --body-color-secondary-1: ;
-    --body-color-secondary-2: ;
+    --body-color-secondary-1: #DF1C12;
+    --body-color-secondary-2: #f5f5f5;
+    --body-color-secondary-3: #eae7e7;
     --box-backgroundcolor: #ffffff;
     --box-backgroundcolor-hover: #F6F9FE;
+    --button-submit-background-color: #04AA6D;
+    --button-submit-hover-background-color: #008554;
+    --button-search-background-color: #DF1C12; 
+    --button-search-hover-background-color :#B60D0D;
     --input-boxshadow-hover: 0 0 5px 2px rgba(202, 29, 29, 0.2);
     --input-border-color: #c7c7c7;
+    --input-background-color: #f6f6f6;
+    --input-placeholder: #00000040;
     --header-color: #282828;
     --left-navbar-color: #2A2E33;
     --text-color: #ffffff;
+    --text-h-color: #B60D0D;
     --route-text-color: #6C757D;
     --hover-left-color: #15171A;
     --submenu-text-color: #000000;
     --submenu-background-color: #c4c4c4a8;
     --submenu-boxshadow: 5px 5px 10px rgba(0, 0, 0, 0.397);
     --submenu-hover: #ffffffc0;
+    --box-boxshadow: 0 0 10px rgba(0, 0, 0, 0.1);
     --button-boxshadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
     --button-boxshadow-active: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
     /*---------------TRANSITIONS---------------*/
@@ -111,6 +122,9 @@ a{
             height: 30px;
             border-radius: 20px;
             width: 500px;
+        }
+        input::placeholder{
+            color: var(--input-placeholder);
         }
     }
     .navbar_avatar{

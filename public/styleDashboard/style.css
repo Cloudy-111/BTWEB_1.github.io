@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #f0f2f5;
+  }
+  
+  .dashboard {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  .dashboard-container {
+    width: 92%;
+    background: #fff;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 10px 15px -3px #0000001a;
+    background-color: #fff;
+  }
+  
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+    color: #090909;
+  }
+  
+  tr:hover {
+    cursor: pointer;
+    background-color: #d9d9d9;
+  }
+  
+  input {
+    padding: 6px 10px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #cc0d00;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 2px;
+  }
+  
+  .button:hover {
+    cursor: pointer;
+  }
+  
+  .exam-area > span {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .exam-list-card {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .exam-card {
+    width: 20vw;
+    height: 170px;
+    padding: 20px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .exam-card-content {
+    margin-top: 10px;
+  }
+  
+  .student-area {
+    width: 80vw;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .select:focus {
+    outline: none;
+  }
+  
+  .statistic-area {
+    width: 80vw;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .popup {
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .popup-content {
+    /* width: 20vw; */
+    /* height: 170px; */
+    padding: 20px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .create-student {
+    margin-top: 4px;
+  }
+  
+  .input {
+    margin-bottom: 14px;
+  }
+  
+  .input > div {
+    width: 100px;
+    margin-bottom: 4px;
+  }
+  
+  .input > input {
+    font-size: 18px;
+  }
+  

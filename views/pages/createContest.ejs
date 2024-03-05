@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../patials/head"); %>
+  <link href="/styleCreateContest/style.css" type="text/css" rel="stylesheet">
+  <title>Tạo Đề Thi Trắc Nghiệm</title>
+</head>
+<body>
+    <%- include('../patials/headerAdmin'); %>
+    <main>
+        <div class="container_create">
+            <div class="main_content">
+                <h1>Tạo đề thi</h1>
+                <form>
+                    <label>Tên kì thi: <input type="text" id="nameExam" placeholder="Nhập tên kì thi..."></label>
+                    <label>Mô tả: <textarea id="description" required></textarea></label>
+                    <div class="chooseTypeContest">
+                        <label>
+                            Kì thi: 
+                            <select id="typeContest">
+                                <option value="type1">Luyện tập</option>
+                                <option value="type2">Giữa kì</option>
+                                <option value="type2">Cuối kì</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="questions">
+                        <label>Danh sách câu hỏi</label>
+                        <div class="listQuestion" id="listQuestion"></div>
+                        <button onclick="addQues()">Thêm câu hỏi</button>
+                    </div>
+                    <div class="btn_success">
+                        <button type="submit"><a href="/admin">Hoàn thành</a></button>
+                    </div>
+    
+                </form>
+                <div class="popup_addQues" id="popup">
+                    <div class="popup_content">
+                        <textarea id="description"></textarea>
+                        <div class="chooseOptions">
+                            <label><input type="radio" name="options" class="checkbox" value="1">A. Option 1</label>
+                            <label><input type="radio" name="options" class="checkbox" value="2">B. Option 2</label>
+                            <label><input type="radio" name="options" class="checkbox" value="3">C. Option 3</label>
+                            <label><input type="radio" name="options" class="checkbox" value="4">D. Option 4</label>
+                        </div>
+                        <label>
+                            Đáp án: 
+                            <select class="answer">
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                                <option value="3">C</option>
+                                <option value="4">D</option>
+                            </select>
+                        </label>
+                       
+                        <div class="popup-action">
+                            <button type="button" onclick="closePopup()">Cancel</button>
+                            <button onclick="saveQues()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<script>
+    const listQues = [];
+    const listQuestion = document.getElementById('listQuestion');
+    function addQues(){
+        document.getElementById('popup').style.visibility = 'visible';
+    }
+    function closePopup(){
+        document.getElementById('popup').style.visibility = 'hidden';
+    }
+    function saveQues() {
+        var newQuestion = document.querySelector('#popup textarea').value; 
+        if (newQuestion !== '') {
+            listQues.push(newQuestion); 
+            displayQuestions(); 
+            document.querySelector('#popup textarea').value = '';
+            closePopup();
+        } else {
+            alert('Nhập câu hỏi trước khi lưu.');
+        }
+    }
+    function displayQuestions() {
+        listQuestion.innerHTML = ''; 
+        listQues.forEach((question, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.textContent = `Câu ${index + 1}: ${question}`; 
+            listQuestion.appendChild(questionDiv);
+        });
+    }
+</script>
+</body>
+</html>

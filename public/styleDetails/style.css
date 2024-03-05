@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+.container_details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form > button {
+    background-color: var(--button-search-background-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: var(--tran-03);
+}
+
+.search > button:hover{
+    background-color: var(--button-search-hover-background-color);
+}
+
+/* main */
+h1,.notice{
+    font-weight: var(--fw-bold);
+    color: var(--text-h-color);
+    margin: 30px;
+}
+.search{
+    display: flex;
+    align-items: center;
+    width: 600px;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--input-background-color);
+    i{
+        font-size: var(--fs-small);
+    }
+}
+
+.search-input{
+    font-size: var(--fs-small);
+    color: var(--submenu-text-color);
+    margin-left:var(--padding);
+    background: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    /* flex:1; */
+}
+
+.search-input::placeholder{
+    color: var(--input-placeholder);
+}
+
+#searchBtn{
+    padding: 15px;
+}
+
+.results ,.detail{
+    width: 1000px;
+    min-height: 300px;
+    max-height: 600px;
+    background-color: var(--box-backgroundcolor);
+    margin: 20px auto;
+    overflow-y: auto;
+}
+.stu-inf{
+    display:inline;
+    text-align: left;
+    font-weight: bold;
+    margin-top:50px ;
+    padding: 10px ;
+    color: black;
+}
+.exam-table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 40px 40px;
+    /* margin: 30px 50px; */
+  }
+  
+.exam-table th, .exam-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+.exam-table th {
+    background-color: #e7aaaa;
+  }
+  
+.exam-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+.details-button{
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+
+.export-pdf-button {
+    background-color: #4CAF50; 
+    color: var(--text-color); 
+    padding: 10px 20px; 
+    border:none;
+    border-radius: 5px; 
+    cursor: pointer; /* Con trỏ khi rê chuột vào */
+
+    display: none;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    font-size: var(--fs-smallest); 
+    margin :20px 300px;
+}
+
+.export-pdf-button:hover {
+    background-color: #45a049; /* Màu nền khi rê chuột vào */
+}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../patials/head"); %>
+    <title>Thống kê</title>
+    <link href="/styleStatistical/style.css" type="text/css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script> <!--stackoverflow-->
+
+    <script src="https://kit.fontawesome.com/0f2d29f0b4.js" crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+    <%- include('../patials/headerAdmin'); %>
+   <main>
+        <div class="container" id="container">
+            <h1>Thống kê kết quả thi</h1>
+            <div id="filter">
+                <!-- <label for="exam-filter">Loc theo ky thi</label> -->
+                <select class="filterItem" id="exam-filter">
+                    <option value="all">Chọn kỳ thi </option>
+                    <option value="ex1">Kỳ thi 1</option>
+                    <option value="ex2">Kỳ thi 2</option>
+                    <option value="ex3">Kỳ thi 3</option>
+                    <option value="ex4">Kỳ thi 4</option>
+
+                </select>
+                <select class="filterItem" id="exam-filter">
+                    <option value="all">Chọn tháng </option>
+                    <option value="t1">tháng 1</option>
+                    <option value="t2">tháng 2</option>
+                    <option value="t3">tháng 3</option>
+                    <option value="t4">tháng 4</option>
+                    <option value="t5">tháng 5</option>
+                    <option value="t6">tháng 6</option>
+                    <option value="t7">tháng 7</option>
+                    <option value="t8">tháng 8</option>
+                    <option value="t9">tháng 9</option>
+                    <option value="t10">tháng 10</option>
+                    <option value="t11">tháng 11</option>
+                    <option value="t12">tháng 12</option>        
+                </select>
+                <!-- <label class="filterItem" for="sDate" >Từ ngày:</label>
+                <input type="date" id="sDate">
+                <label class="filterItem" for="eDate">Đến ngày:</label>
+                <input type="date" id="eDate">-->
+                <button class="filterItem" id='filter-btn' onclick="filterData()">Hiển thị</button>
+                 
+            </div>
+            <section class="info-boxes">
+				<div class="info-box">
+					<div class="box-icon">
+                        <i class="fas fa-users"></i>    
+                    </div>
+					<div class="box-content">
+						<p>Tổng số lần tham gia</p>
+						<p>18023</p>                        
+					</div>
+				</div>
+            
+				<div class="info-box">
+					<div class="box-icon">
+						<i class="fas fa-check-circle"></i>
+					</div>
+					
+					<div class="box-content">
+						<p>Tỉ lệ hoàn thành bài thi</p>
+                        <p>87%</p>
+					</div>
+				</div>
+				
+				<div class="info-box">
+		
+					<div class="box-icon">
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+					<div class="box-content">
+						<p>Điểm trung bình</p>
+                        <p id="averageScore">7.5</p>
+                    </div>
+                    
+		
+				</div>
+				
+				<div class="info-box">
+		
+					<div class="box-icon">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <div>
+                        <p>Thời gian làm bài trung bình</p>
+                        <p id="averagetime">50 phút</p>
+                    </div> 
+				</div>
+			</section>
+            <!-- bang ket qua -->
+            <div class="table-responsive" style="height: 100%; min-height: 100%; max-height: 100%;">
+                <table id="tabletk">
+                    <thead>
+                        <tr>
+                            <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Số thứ tự</th>
+                            <th>Mã sinh viên</th>
+                            <th>Họ tên sinh viên</th>
+                            <th>Lớp</th>                    
+                            <th>Kỳ thi</th>
+                            <th>Điểm thi</th>
+                            <th>Kết quả</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>SV001</td>
+                            <td>Nguyễn Văn A</td>
+                            <td>A01</td>
+                            <td>Kỳ thi 1</td>
+                            <td>8.5</td>
+                            <td>Đạt</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>SV002</td>
+                            <td>Trần Thị B</td>
+                            <td>A02</td>
+                            <td>Kỳ thi 1</td>
+                            <td>7.8</td>
+                            <td>Đậu</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>SV003</td>
+                            <td>Lê Văn C</td>
+                            <td>A03</td>
+                            <td>Kỳ thi 2</td>
+                            <td>9.2</td>
+                            <td>Đậu</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>SV004</td>
+                            <td>Phạm Thị D</td>
+                            <td>A04</td>
+                            <td>Kỳ thi 2</td>
+                            <td>6.7</td>
+                            <td>Rớt</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>SV005</td>
+                            <td>Hoàng Văn E</td>
+                            <td>A05</td>
+                            <td>Kỳ thi 3</td>
+                            <td>8.9</td>
+                            <td>Đậu</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>SV006</td>
+                            <td>Trần Thị F</td>
+                            <td>A06</td>
+                            <td>Kỳ thi 3</td>
+                            <td>7.3</td>
+                            <td>Đậu</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>SV007</td>
+                            <td>Đặng Văn G</td>
+                            <td>A07</td>
+                            <td>Kỳ thi 4</td>
+                            <td>9.8</td>
+                            <td>Đậu</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>SV008</td>
+                            <td>Lê Thị H</td>
+                            <td>A08</td>
+                            <td>Kỳ thi 4</td>
+                            <td>5.6</td>
+                            <td>Rớt</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>SV009</td>
+                            <td>Phạm Văn I</td>
+                            <td>A09</td>
+                            <td>Kỳ thi 5</td>
+                            <td>8.0</td>
+                            <td>Đậu</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>SV010</td>
+                            <td>Nguyễn Thị K</td>
+                            <td>A10</td>
+                            <td>Kỳ thi 5</td>
+                            <td>7.2</td>
+                            <td>Đậu</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="chart-container">
+                <div id="pho_diem_chart" class="chart" style="width: 800px; height: 100%;padding: 10px;"></div>
+                
+            </div>    
+            <div id="export">
+                <button id="export-btn-pdf" onclick="exportToPDF()">Xuất file PDF</button>
+                <!-- <button id="export-btn-excel" onclick="exportToExcel()">Xuất file Excel</button> -->
+
+            </div>                                        
+        </div>
+   </main> 
+   <%- include('../patials/footer'); %>
+    
+<script>
+    
+    //pho diem
+
+    let dataPho = [
+        ["0", 24],["0.25", 8],["0.5", 19],["0.75", 29],["1", 12],
+        ["1.25", 236],["1.5", 322],["1.75", 360],["2", 701],["2.25", 898],
+        ["2.5", 1267],["2.75", 1723],["3", 2716],["3.25", 3387],["3.5", 5146],
+        ["3.75", 6487],["4", 9399],["4.25", 10932],["4.5", 14910],["4.75", 15080],
+        ["5", 30381],["5.25", 29500],["5.5", 40146],["5.75", 44329],["6", 59442],
+        ["6.25", 59616],["6.5", 72128],["6.75", 68899],["7", 79164],["7.25", 67295],
+        ["7.5", 73821],["7.75", 63628],["8", 67629],["8.25", 50848],["8.5", 48855],
+        ["8.75", 35518],["9", 26206],["9.25", 12073],["9.5", 4661],["9.75", 443],
+        ["10", 1], ["9.8", 1000], ["8.6", 29345], ["7.2", 45000], ["6.4", 50700]
+    ];
+    dataPho.sort((a, b) => parseFloat(a[0]) - parseFloat(b[0]));
+    Highcharts.chart('pho_diem_chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Phổ điểm'
+        },
+        xAxis: {
+            title: {
+                text: 'Điểm'
+            },
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: 'Số lượng thí sinh'
+            }
+        },
+        series: [{
+            name: 'Số lượng thí sinh',
+            data: dataPho,
+
+            colorByPoint: false
+        }]
+    
+    });
+    // for export button
+
+    function exportToPDF() {
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        var source = document.getElementById('container'); // Lấy phần tử chứa kết quả
+        var specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+                return true; // Bỏ qua xử lý các phần tử có id là "bypassme"
+            }
+        };
+        var margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+
+        pdf.fromHTML(
+            source, // Phần tử HTML hoặc chuỗi HTML
+            margins.left, // Tọa độ x
+            margins.top, {
+                'width': margins.width, // Chiều rộng tối đa của nội dung trên PDF
+                'elementHandlers': specialElementHandlers
+            },
+            function (dispose) {
+                pdf.save('thongke.pdf'); // Lưu file PDF với tên "result.pdf"
+            }, margins
+        );
+        alert("Xác nhận tải xuống file PDF!");
+        
+    }
+
+</script>
+<!-- phan duoi -->
+
+</body>
+</html>

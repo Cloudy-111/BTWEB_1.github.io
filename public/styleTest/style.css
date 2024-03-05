@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    font-family: "Be Vietnam Pro", sans-serif;
+    /* padding: 0;
+    margin: 0;
+    box-sizing: border-box; */
+}
+
+.container_test{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--body-color-secondary-1);
+    margin-bottom: 40px;
+    z-index: 1;
+}
+#heading h2{
+    padding: 15px 0;
+    color: var(--text-color);
+    font-size: var(--fs-large);
+    font-weight: var(--fw-medium);
+}
+/*infoForm h3{
+    text-align: center;
+}
+
+#infoForm {
+    font-size: 15px;
+    width: 50%;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ddd;
+}
+
+#infoForm input{
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+#infoForm button{
+    font-size: 20px;
+    color:white;
+    background-color: rgb(97, 136, 195);
+    padding:10px 15px;
+    margin-left: 40%;
+    margin-top: 50px;
+} */
+#questionSection {
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    background-color: var(--body-color-secondary-2);
+    box-shadow: var(--box-boxshadow);
+    border-style: ridge;
+}
+#questionSection h3{
+    padding: 20px 0;
+    font-size: var(--fs-small);
+    text-transform: uppercase; 
+    margin-left: 45%;
+}
+#timer{
+    margin-left: 1200px;
+    font-size: var(--fs-largest);
+    font-weight: var(--fw-medium);
+    position: fixed;
+}
+#questionSection div {
+    padding: 0 0 30px 20px;
+}
+#submitButton{
+    font-size: var(--fs-large);
+    background-color: var(--button-submit-background-color);
+    border-radius: 10px;
+    padding: 14px 40px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: var(--fw-bold);
+    margin-bottom: 50px;
+    cursor: pointer;
+}

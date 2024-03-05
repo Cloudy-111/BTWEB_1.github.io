@@ -9,57 +9,56 @@
     <%- include('../patials/header'); %>
     <main>
         <div class="container_index">
-            <%- include('../patials/leftNavbar'); %>
             <div class="main_content">
-                Hello <% if (name) { %>
-                    <%= name %>
-                <% } else { %>
-                    there
-                <% } %>
                 <div class="examList">
-                    <h1>Danh sách kì thi</h1>
-                    <div class="filter">
-                        <input type="text" id="searchInput" placeholder="Tìm kiếm...">
-                        <select id="statusFilter">
-                          <option value="all">Tất cả</option>
-                          <option value="open">Mở</option>
-                          <option value="closed">Đóng</option>
-                        </select>
+                    <div class="titleAndFilter">
+                        <h1>Danh sách kì thi</h1>
+                        <div class="filter">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm...">
+                            <select id="statusFilter">
+                              <option value="all">Tất cả</option>
+                              <option value="open">Mở</option>
+                              <option value="closed">Đóng</option>
+                            </select>
+                        </div>
                     </div>
-                    <ul id="examList">
-                        <li class="open">
-                            Luyện tập(Tự do)
-                            <div class="test_open">
-                                <a href="/test.ejs">Luyện tập 1</a>
-                                <a href="/test.ejs">Luyện tập 2</a>
-                                <a href="/test.ejs">Luyện tập 3</a>
-                                <a href="/test.ejs">Luyện tập 4</a>
-                            </div>
-                        </li>
-                        <li class="closed">
-                            Giữa kì (ngày 20/03/2024)
-                            <div class="test_close" id="test_close1">
-                                <a>Giữa kì 1</a>
-                                <a>Giữa kì 2</a>
-                                <a>Giữa kì 3</a>
-                                <a>Giữa kì 4</a>
-                            </div>
-                        </li>
-                        <li class="closed">
-                            Cuối kì (ngày 20/05/2024)
-                            <div class="test_close" id="test_close2">
-                                <a>Cuối kì 1</a>
-                                <a>Cuối kì 2</a>
-                                <a>Cuối kì 3</a>
-                                <a>Cuối kì 4</a>
-                            </div>
-                        </li>
-                        
-                    </ul>
+                    <div class="listExam">
+                        <ul id="examList">
+                            <li class="open">
+                                Luyện tập(Tự do)
+                                <div class="test_open">
+                                    <a href="/test">Luyện tập 1</a>
+                                    <a href="/test">Luyện tập 2</a>
+                                    <a href="/test">Luyện tập 3</a>
+                                    <a href="/test">Luyện tập 4</a>
+                                </div>
+                            </li>
+                            <li class="closed">
+                                Giữa kì (ngày 20/03/2024)
+                                <div class="test_close" id="test_close1">
+                                    <a>Giữa kì 1</a>
+                                    <a>Giữa kì 2</a>
+                                    <a>Giữa kì 3</a>
+                                    <a>Giữa kì 4</a>
+                                </div>
+                            </li>
+                            <li class="closed">
+                                Cuối kì (ngày 20/05/2024)
+                                <div class="test_close" id="test_close2">
+                                    <a>Cuối kì 1</a>
+                                    <a>Cuối kì 2</a>
+                                    <a>Cuối kì 3</a>
+                                    <a>Cuối kì 4</a>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+    <%- include('../patials/footer'); %>
     <script>
         document.getElementById('test_close1').addEventListener('click', function(event){
             event.preventDefault();

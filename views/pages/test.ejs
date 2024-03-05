@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trắc Nghiệm Online</title>
+    <link href="/styleTest/style.css" type="text/css" rel="stylesheet">
+    <%- include("../patials/head"); %>
+</head>
+<body>
+    <%- include('../patials/header'); %>
+    <main>
+        <div class="container_test">
+            <div id="heading">
+                <h2>Hệ thống thi trắc nghiệm</h2>
+            </div>
+            <!-- <div id="infoForm">
+                <h3>Nhập thông tin cá nhân</h3>
+                <p class="text">Họ và tên</p>
+                <input type="text" id="fullName" placeholder="Ví dụ: Nguyễn Văn A">
+                <p class="text">Ngày tháng năm sinh</p>
+                <input type="date" id="dob">
+                <p class="text">Mã sinh viên</p>
+                <input type="text" id="studentId" placeholder="Ví dụ: B21DCCN123">
+                <p class="text">Lớp</p>
+                <input type="text" id="class" placeholder="Ví dụ: CN12">
+                <button onclick="showQuestions()">Bắt đầu thi</button>
+            </div> -->
+            
+            <div id="timer">30:00</div>
+            <div id="questionSection" >        
+                <h3>Bài làm</h3>
+                <!-- Câu hỏi sẽ được thêm vào đây bằng JavaScript-->     
+                
+            </div>   
+            <button id="submitButton">Nộp bài</button> 
+            <div id="resultSection"></div>
+        </div>
+    </main>
+
+<script>
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        var endInterval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(endInterval);
+                // Xử lý khi hết giờ, ví dụ: tự động nộp bài
+                alert("Hết giờ!");
+                // Tự động nộp bài hoặc khóa biểu mẫu
+                document.getElementById('submitButton').click();
+            }
+        }, 1000);
+    }
+    function showQuestions() {
+        //     // Lấy thông tin từ form
+        // const fullName = document.getElementById('fullName').value;
+        // const dob = document.getElementById('dob').value;
+        // const studentId = document.getElementById('studentId').value;
+        // const studentClass = document.getElementById('class').value;
+
+        // // Kiểm tra xem đã nhập tất cả thông tin chưa
+        // if (!fullName || !dob || !studentId || !studentClass) {
+        //     alert("Vui lòng nhập đầy đủ thông tin!");
+        //     return;
+        // }
+
+        // // Ẩn form thông tin
+        // document.getElementById('infoForm').style.display = 'none';
+
+        // Hiển thị phần câu hỏi
+        // const questionSection = document.getElementById('questionSection');
+        // questionSection.style.display = 'block';
+
+        const correctAnswers = {
+            '1': 'A', // Câu 1, đáp án đúng là A
+            '2': 'B', 
+            '3': 'C',
+            '4': 'D',
+            '5': 'A',
+            '6': 'B',
+            '7': 'C',
+            '8': 'D',
+            '9': 'A',
+            '10': 'B',
+            // Câu Đúng sai
+            '11': 'True', 
+            '12': 'False', 
+            '13': 'True', 
+            '14': 'False', 
+            '15': 'True', 
+            '16': 'False', 
+            '17': 'False', 
+            '18': 'True', 
+            '19': 'False', 
+            '20': 'False'        
+        };
+        
+
+        // Tạo câu hỏi demo (ở đây là 20 câu hỏi giả định)
+        for (let i = 1; i <= 10; i++) {
+            const questionDiv = document.createElement('div');
+            questionDiv.innerHTML = `
+                <p>Câu ${i}: Đây là nội dung câu hỏi số ${i}?</p>
+                <input type="radio" name="question${i}" value="A"> A. Lựa chọn A<br>
+                <input type="radio" name="question${i}" value="B"> B. Lựa chọn B<br>
+                <input type="radio" name="question${i}" value="C"> C. Lựa chọn C<br>
+                <input type="radio" name="question${i}" value="D"> D. Lựa chọn D
+            `;
+            questionSection.appendChild(questionDiv);
+        }
+        for (let i = 11; i <= 20; i++) {
+            const questionDiv = document.createElement('div');
+            questionDiv.innerHTML = `
+                <p>Câu ${i}: Đây là câu hỏi Đúng/Sai số ${i}?</p>
+                <input type="radio" name="question${i}" value="True"> Đúng<br>
+                <input type="radio" name="question${i}" value="False"> Sai
+            `;
+            questionSection.appendChild(questionDiv);
+        }
+        var thirtyMinutes = 60 * 30; // 30 phút
+        var display = document.querySelector('#timer'); // Lấy phần tử hiển thị thời gian
+        startTimer(thirtyMinutes, display);
+        document.getElementById('submitButton').style.display = 'block';
+        document.getElementById('submitButton').addEventListener('click', function() {
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+        
+            // Duyệt qua mỗi câu hỏi
+            for (let questionId in correctAnswers) {
+                let userAnswer = document.querySelector(`input[name="question${questionId}"]:checked`);
+                if (userAnswer && userAnswer.value === correctAnswers[questionId]) {
+                    score++;
+                }
+            }
+            timer.style.display = 'none';
+            questionSection.style.display = 'none';
+            document.getElementById('submitButton').style.display = 'none';
+            resultSection.style.display = 'block';
+            resultSection.innerHTML = `
+                <div style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <p style="font-size: 30px; text-align: center;">Điểm số của bạn là: ${score} / 40</p>
+                    <button style="font-size: 30px;"> <a href='/resultPage'>Xem chi tiết đáp án</a></button>
+                </div>
+            `;
+        });    
+    
+    }
+    showQuestions();
+
+</script>
+</body>
+</html>

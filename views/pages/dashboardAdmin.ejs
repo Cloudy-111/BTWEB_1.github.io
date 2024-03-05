@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styleDashboard/style.css"/>
+    <title>Dashboard</title>
+    <%- include("../patials/head"); %>
+  </head>
+  <body>
+    <%- include('../patials/headerAdmin'); %>
+    <main>
+      <div class="dashboard">
+        <div class="dashboard-container">
+          <div class="exam-area">
+            <span class="exam-label"> Kỳ thi </span>
+            <div class="button" style="margin-left: 30px"><a href="/createContest" style="color: white;">Tạo kì thi</a></div>
+            <div class="exam-list-card" id="exam-list-card"></div>
+          </div>
+  
+          <div class="student-area">
+            <div class="student-container">
+              <div>
+                <span style="font-size: 16px; font-weight: 600">Sinh viên</span>
+              </div>
+              <div
+                class="button"
+                style="margin-top: 20px"
+                onclick="openCreateStudentPopup()"
+              >
+                Thêm sinh viên
+              </div>
+              <div class="button">
+                <a href="/detailsResult" style="color: white;">Tra cứu sinh viên</a>
+              </div>
+              <table class="student-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Họ và tên</th>
+                    <th>Mã sinh viên</th>
+                    <th>Mã lớp</th>
+                    <th>Ngày sinh</th>
+                  </tr>
+                </thead>
+                <tbody id="student-list"></tbody>
+              </table>
+            </div>
+          </div>
+  
+          <div class="statistic-area">
+            <div class="statistic-container">
+              <div>
+                <span style="font-size: 16px; font-weight: 600"><a href="/thongke">Thống kê</a></span>
+              </div>
+  
+              <table class="statistic-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên kì thi</th>
+                    <th>Số lượng người dùng tham gia</th>
+                    <th>Tỷ lệ hoàn thành</th>
+                    <th>Điểm trung bình</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Giữa kì môn lập trình web 2024</td>
+                    <td>100</td>
+                    <td>92%</td>
+                    <td>7.8</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Giữa kì môn lập trình web 2024</td>
+                    <td>100</td>
+                    <td>92%</td>
+                    <td>7.8</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>Giữa kì môn lập trình web 2024</td>
+                    <td>100</td>
+                    <td>92%</td>
+                    <td>7.8</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+  
+          <div class="popup" id="create-popup">
+            <div class="popup-content">
+              <h3>Thêm sinh viên</h3>
+              <div class="create-student">
+                <div class="input">
+                  <div><label for="studentName">Họ và tên</label></div>
+                  <input
+                    type="text"
+                    style="width: 300px"
+                    id="createStudentName"
+                  />
+                </div>
+                <div class="input">
+                  <div><label for="studentMSV">Mã sinh viên</label></div>
+                  <input type="text" style="width: 300px" id="createStudentMsv" />
+                </div>
+                <div class="input">
+                  <div><label for="studentML">Mã lớp</label></div>
+                  <input type="text" style="width: 300px" id="createStudentMl" />
+                </div>
+                <div class="input">
+                  <div><label for="studentDOB">Ngày sinh</label></div>
+                  <input type="date" style="width: 300px" id="createStudentDOB" />
+                </div>
+              </div>
+              <div class="popup-action">
+                <div
+                  class="button saveStudent"
+                  onclick="closeCreateStudentPopup()"
+                >
+                  Hủy
+                </div>
+                <div class="button saveStudent" onclick="createStudent()">
+                  Lưu
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="popup" id="edit-popup">
+            <div class="popup-content">
+              <h3>Thêm sinh viên</h3>
+              <div class="create-student">
+                <div class="input">
+                  <div><label for="studentName">Họ và tên</label></div>
+                  <input type="text" style="width: 300px" id="editStudentName" />
+                </div>
+                <div class="input">
+                  <div><label for="studentMSV">Mã sinh viên</label></div>
+                  <input type="text" style="width: 300px" id="editStudentMsv" />
+                </div>
+                <div class="input">
+                  <div><label for="studentML">Mã lớp</label></div>
+                  <input type="text" style="width: 300px" id="editStudentMl" />
+                </div>
+                <div class="input">
+                  <div><label for="studentDOB">Ngày sinh</label></div>
+                  <input type="date" style="width: 300px" id="editStudentDOB" />
+                </div>
+              </div>
+              <div class="popup-action">
+                <div class="button saveStudent" onclick="closeEditStudentPopup()">
+                  Hủy
+                </div>
+                <div class="button saveStudent" id="delEditStudent">Xóa</div>
+                <div class="button saveStudent" id="saveEditStudent">Lưu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const dsKiThi = JSON.parse('<%-JSON.stringify(dsKiThi)%>');
+      const dsSinhVien = JSON.parse('<%-JSON.stringify(dsSinhVien)%>');
+    
+
+      function normalizeDate(date) {
+        let dateParts = date.split("-");
+
+        dateParts.reverse();
+
+        let reversedDate = dateParts.join("/");
+
+        return reversedDate;
+      }
+
+      function loadPage() {
+        const exam_area = document.getElementById("exam-list-card");
+        const student_area = document.getElementById("student-list");
+
+        exam_area.innerHTML = "";
+        student_area.innerHTML = "";
+        Object.keys(dsKiThi).forEach((kiThiID) => {
+          const kiThi = dsKiThi[kiThiID];
+
+          const examCard = `
+              <div class="exam-card">
+                  <div class="exam-card-container">
+                  <div style="font-size: 16px; font-weight: 600; height: 30px"
+                      >${kiThi["ten"]}</div
+                  >
+                  <div class="exam-card-content">
+                      <div><span>- Số câu hỏi: ${kiThi["soCauHoi"]}</span></div>
+                      <div><span>- Ngày thi: ${kiThi["ngayThi"]}</span></div>
+                      <div><span>- Trạng thái: ${kiThi["trangThai"]}</span></div>
+                  </div>
+                  </div>
+              </div>`;
+          exam_area.innerHTML += examCard;
+        });
+
+        Object.keys(dsSinhVien).forEach((sinhVienID) => {
+          const sv = dsSinhVien[sinhVienID];
+
+          const studentRow = `
+              <tr onclick="openEditStudentPopup(${sinhVienID})">
+                  <td>${sinhVienID}</td>
+                  <td>${sv["hoten"]}</td>
+                  <td>${sv["msv"]}</td>
+                  <td>${sv["ml"]}</td>
+                  <td>${normalizeDate(sv["ngaysinh"])}</td>
+              </tr>`;
+          student_area.innerHTML += studentRow;
+        });
+      }
+
+      function closeCreateStudentPopup() {
+        document.getElementById("create-popup").style.visibility = "hidden";
+      }
+
+      function openCreateStudentPopup() {
+        document.getElementById("create-popup").style.visibility = "visible";
+      }
+
+      function closeEditStudentPopup() {
+        document.getElementById("edit-popup").style.visibility = "hidden";
+      }
+
+      function openEditStudentPopup(studentId) {
+        document.getElementById("edit-popup").style.visibility = "visible";
+        const student = dsSinhVien[studentId];
+        document.getElementById("editStudentName").value = student["hoten"];
+        document.getElementById("editStudentMsv").value = student["msv"];
+        document.getElementById("editStudentMl").value = student["ml"];
+        document.getElementById("editStudentDOB").value = student["ngaysinh"];
+        document.getElementById("saveEditStudent").onclick = function () {
+          editStudent(studentId);
+        };
+
+        document.getElementById("delEditStudent").onclick = function () {
+          delStudent(studentId);
+        };
+      }
+
+      function createStudent() {
+        const hoTen = document.getElementById("createStudentName").value;
+        const msv = document.getElementById("createStudentMsv").value;
+        const ml = document.getElementById("createStudentMl").value;
+        const ngaySinh = document.getElementById("createStudentDOB").value;
+
+        dsSinhVien[Object.keys(dsSinhVien).length + 1] = {
+          hoten: hoTen,
+          msv: msv,
+          ml: ml,
+          ngaysinh: normalizeDate(ngaySinh),
+        };
+        closeCreateStudentPopup();
+        loadPage();
+      }
+
+      function editStudent(studentId) {
+        const hoTen = document.getElementById("editStudentName").value;
+        const msv = document.getElementById("editStudentMsv").value;
+        const ml = document.getElementById("editStudentMl").value;
+        const ngaySinh = document.getElementById("editStudentDOB").value;
+
+        dsSinhVien[studentId] = {
+          hoten: hoTen,
+          msv: msv,
+          ml: ml,
+          ngaysinh: normalizeDate(ngaySinh),
+        };
+        closeEditStudentPopup();
+        loadPage();
+      }
+
+      function delStudent(studentId) {
+        delete dsSinhVien[studentId];
+        closeEditStudentPopup();
+        loadPage();
+      }
+
+      loadPage();
+
+    </script>
+  </body>
+</html>
